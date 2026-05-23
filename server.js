@@ -51,12 +51,12 @@ app.post('/api/pix', async (req, res) => {
             }
         });
 
-        if (response.data && response.data.success) {
+        if (response.data && response.data.payment_status) {
             res.json({
                 success: true,
-                pixCode: response.data.data.pix_code,
-                qrCode: response.data.data.qr_code,
-                hash: response.data.data.hash
+                pixCode: response.data.pix.pix_qr_code,
+                qrCode: response.data.pix.pix_qr_code,
+                hash: response.data.hash
             });
         } else {
             console.error('TriboPay Error Response:', response.data);
